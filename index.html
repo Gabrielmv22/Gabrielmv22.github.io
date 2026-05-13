@@ -495,7 +495,8 @@ footer{
 
         <article class="product-card">
 
-            <img src="https://images.unsplash.com/photo-1591489378430-ef2f4c626b35?q=80&w=1200&auto=format&fit=crop" alt="GPU">
+            <img src="https://images.unsplash.com/photo-1591489378430-ef2f4c626b35?q=80&w=1200&auto=format&fit=crop
+" alt="GPU">
 
             <div class="product-content">
 
@@ -511,7 +512,7 @@ footer{
                 <span class="price">$2,499</span>
 
                 <div class="product-buttons">
-                    <button class="neon-btn">
+                    <button onclick="addToCart('RTX 5090 TITAN',2499)" class="neon-btn">
                         AGREGAR AL CARRITO
                     </button>
 
@@ -542,7 +543,7 @@ footer{
                 <span class="price">$899</span>
 
                 <div class="product-buttons">
-                    <button class="neon-btn">
+                    <button onclick="addToCart('RTX 5090 TITAN',2499)" class="neon-btn">
                         AGREGAR AL CARRITO
                     </button>
 
@@ -573,7 +574,7 @@ footer{
                 <span class="price">$599</span>
 
                 <div class="product-buttons">
-                    <button class="neon-btn">
+                    <button onclick="addToCart('RTX 5090 TITAN',2499)" class="neon-btn">
                         AGREGAR AL CARRITO
                     </button>
 
@@ -658,6 +659,112 @@ footer{
     </div>
 
 </section>
+
+<footer>
+    © 2026 COVENANT INDUSTRIAL SYSTEMS — ALL RIGHTS RESERVED
+<div id="cart-panel" class="fixed top-0 right-\[-420px\] w-\[400px\] h-full bg-\[#11131A\] border-l border-cyan-400/20 z-\[9999\] transition-all duration-500 shadow-2xl shadow-cyan-500/10 overflow-y-auto">
+
+    <div class="flex items-center justify-between p-6 border-b border-white/10">
+        <h2 class="text-2xl font-bold glow">CARRITO</h2>
+
+        <button onclick="toggleCart()" class="text-white text-3xl hover:text-cyan-400 transition">
+            ×
+        </button>
+    </div>
+
+    <div id="cart-items" class="p-6 space-y-4">
+        <p class="text-gray-400">Tu carrito está vacío.</p>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full p-6 border-t border-white/10 bg-[#0D1118]">
+
+        <div class="flex items-center justify-between mb-5">
+            <span class="text-gray-400">TOTAL</span>
+            <span id="cart-total" class="text-2xl font-bold text-cyan-400">$0</span>
+        </div>
+
+        <button class="neon-btn w-full">
+            FINALIZAR COMPRA
+        </button>
+
+    </div>
+
+</div>
+
+<button onclick="toggleCart()" class="fixed bottom-8 right-8 z-[999] bg-cyan-400 text-black w-16 h-16 rounded-full flex items-center justify-center shadow-2xl shadow-cyan-400/40 hover:scale-110 transition-all">
+    <span class="material-symbols-outlined text-3xl">shopping_cart</span>
+</button>
+
+<script>
+
+let cart = [];
+let total = 0;
+
+function toggleCart(){
+
+    const panel = document.getElementById('cart-panel');
+
+    if(panel.style.right === '0px'){
+        panel.style.right = '-420px';
+    }
+    else{
+        panel.style.right = '0px';
+    }
+}
+
+function addToCart(name, price){
+
+    cart.push({name, price});
+    total += price;
+
+    renderCart();
+}
+
+function renderCart(){
+
+    const cartItems = document.getElementById('cart-items');
+    const totalElement = document.getElementById('cart-total');
+
+    cartItems.innerHTML = '';
+
+    cart.forEach((item,index)=>{
+
+        cartItems.innerHTML += `
+
+        <div class="bg-[#171B26] border border-white/5 rounded-2xl p-4">
+
+            <div class="flex items-center justify-between mb-2">
+                <h4 class="font-bold">${item.name}</h4>
+
+                <button onclick="removeItem(${index})" class="text-red-400 hover:text-red-300 transition">
+                    ×
+                </button>
+            </div>
+
+            <span class="text-cyan-400 font-bold">$${item.price}</span>
+
+        </div>
+
+        `;
+
+    });
+
+    if(cart.length === 0){
+        cartItems.innerHTML = '<p class="text-gray-400">Tu carrito está vacío.</p>';
+    }
+
+    totalElement.innerText = '$' + total;
+}
+
+function removeItem(index){
+
+    total -= cart[index].price;
+    cart.splice(index,1);
+
+    renderCart();
+}
+
+</script>
 
 <footer>
     © 2026 COVENANT INDUSTRIAL SYSTEMS — ALL RIGHTS RESERVED
