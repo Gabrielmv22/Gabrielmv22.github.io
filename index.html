@@ -52,6 +52,15 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* Animacion para la cinta de texto infinito */
+        @keyframes scroll-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.3333%); }
+        }
+        .animate-marquee {
+            animation: scroll-marquee 25s linear infinite;
+        }
     </style>
 </head>
 <body class="bg-dark-bg text-white font-sans selection:bg-cyber-blue">
@@ -153,135 +162,189 @@
         </div>
     </section>
 
-    <!-- SECCION INVENTARIO ACTUALIZADA CON PRODUCTOS REALES -->
+    <!-- SECCION INVENTARIO -->
     <section id="inventario" class="bg-[#080808]">
-        <div class="max-w-7xl mx-auto px-6 w-full">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tighter italic">INVENTARIO_PREMIUM</h2>
-                    <div class="h-1 w-20 bg-cyber-blue"></div>
-                    <p class="text-gray-500 mt-4 mono text-xs uppercase tracking-widest">Hardware de grado entusiasta en stock disponible</p>
-                </div>
-                
-                <div class="flex gap-4 items-center">
-                    <button id="btnPrev" class="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-cyber-blue hover:border-cyber-blue transition text-white">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                    </button>
-                    <button id="btnNext" class="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-cyber-blue hover:border-cyber-blue transition text-white">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
+        <div class="w-full flex flex-col items-center">
+            
+            <!-- CINTA DE TEXTO ANIMADA (MARQUEE) - SUPERIOR -->
+            <div class="relative flex overflow-x-hidden border-y border-white/5 bg-cyber-blue/10 py-4 mb-16 w-full shadow-[0_0_30px_rgba(0,102,255,0.1)]">
+                <div class="animate-marquee whitespace-nowrap flex items-center min-w-max">
+                    <!-- Set 1 -->
+                    <div class="flex items-center gap-10 px-5 text-cyber-blue font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] font-bold">
+                        <span>ENSAMBLES PREMIUM</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>HARDWARE EXTREMO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>PRECIOS UNICOS</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>STOCK LIMITADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>OVERCLOCK CERTIFICADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>GRADO INDUSTRIAL</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                    </div>
+                    <!-- Set 2 -->
+                    <div class="flex items-center gap-10 px-5 text-cyber-blue font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] font-bold">
+                        <span>ENSAMBLES PREMIUM</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>HARDWARE EXTREMO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>PRECIOS UNICOS</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>STOCK LIMITADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>OVERCLOCK CERTIFICADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>GRADO INDUSTRIAL</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                    </div>
+                    <!-- Set 3 -->
+                    <div class="flex items-center gap-10 px-5 text-cyber-blue font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] font-bold">
+                        <span>ENSAMBLES PREMIUM</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>HARDWARE EXTREMO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>PRECIOS UNICOS</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>STOCK LIMITADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>OVERCLOCK CERTIFICADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>GRADO INDUSTRIAL</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                    </div>
                 </div>
             </div>
 
-            <div id="carrusel" class="flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar pb-10 pt-4">
-                
-                <!-- Producto 1: GPU -->
-                <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
-                    <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
-                        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 right-4 bg-black/80 text-cyber-blue text-[10px] font-bold px-3 py-1 border border-cyber-blue/30 rounded">STOCK_LIMITADO</div>
+            <!-- CONTENIDO DE INVENTARIO -->
+            <div class="max-w-7xl mx-auto px-6 w-full">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tighter italic">INVENTARIO_PREMIUM</h2>
+                        <div class="h-1 w-20 bg-cyber-blue"></div>
+                        <p class="text-gray-500 mt-4 mono text-xs uppercase tracking-widest">Hardware de grado entusiasta en stock disponible</p>
                     </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-xl font-bold tracking-tight">MSI GeForce RTX 4090 SUPRIM X</h3>
-                            <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">24GB GDDR6X / Tri-Frozr 3S / DLSS 3</p>
-                        </div>
-                        <span class="text-cyber-blue font-bold">$2,199</span>
+                    
+                    <div class="flex gap-4 items-center">
+                        <button id="btnPrev" class="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-cyber-blue hover:border-cyber-blue transition text-white">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <button id="btnNext" class="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-cyber-blue hover:border-cyber-blue transition text-white">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
                     </div>
-                    <button class="w-full bg-white text-black py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-cyber-blue hover:text-white transition btn-glitch">
-                        Agregar al Carrito
-                    </button>
                 </div>
 
-                <!-- Producto 2: CPU -->
-                <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl relative shadow-[0_0_50px_rgba(0,102,255,0.05)] min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
-                    <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
-                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 right-4 bg-cyber-blue text-white text-[10px] font-bold px-3 py-1 rounded">MAS_VENDIDO</div>
-                    </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-xl font-bold tracking-tight">Intel Core i9-14900K 3.2 GHz</h3>
-                            <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">24 Nucleos / 32 Hilos / Hasta 6.0 GHz</p>
+                <div id="carrusel" class="flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar pb-10 pt-4">
+                    
+                    <!-- Producto 1: GPU -->
+                    <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
+                        <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
+                            <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
+                            <div class="absolute top-4 right-4 bg-black/80 text-cyber-blue text-[10px] font-bold px-3 py-1 border border-cyber-blue/30 rounded">STOCK_LIMITADO</div>
                         </div>
-                        <span class="text-cyber-blue font-bold">$649</span>
-                    </div>
-                    <button class="w-full bg-cyber-blue text-white py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest btn-glitch">
-                        Compra Rapida
-                    </button>
-                </div>
-
-                <!-- Producto 3: Placa Base -->
-                <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
-                    <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
-                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-xl font-bold tracking-tight">ASUS ROG MAXIMUS Z790 HERO</h3>
-                            <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">Socket 1700 / WiFi 7 / PCIe 5.0</p>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold tracking-tight">MSI GeForce RTX 4090 SUPRIM X</h3>
+                                <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">24GB GDDR6X / Tri-Frozr 3S / DLSS 3</p>
+                            </div>
+                            <span class="text-cyber-blue font-bold">$2,199</span>
                         </div>
-                        <span class="text-cyber-blue font-bold">$749</span>
+                        <button class="w-full bg-white text-black py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-cyber-blue hover:text-white transition btn-glitch">
+                            Agregar al Carrito
+                        </button>
                     </div>
-                    <button class="w-full border border-white/10 text-white py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition">
-                        Agregar al Carrito
-                    </button>
-                </div>
 
-                <!-- Producto 4: RAM -->
-                <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
-                    <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
-                        <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 right-4 bg-black/80 text-cyber-blue text-[10px] font-bold px-3 py-1 border border-cyber-blue/30 rounded">NUEVO</div>
-                    </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-xl font-bold tracking-tight">Corsair Dominator Platinum RGB</h3>
-                            <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">64GB (2x32) DDR5 6000MHz CL30</p>
+                    <!-- Producto 2: CPU -->
+                    <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl relative shadow-[0_0_50px_rgba(0,102,255,0.05)] min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
+                        <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
+                            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
+                            <div class="absolute top-4 right-4 bg-cyber-blue text-white text-[10px] font-bold px-3 py-1 rounded">MAS_VENDIDO</div>
                         </div>
-                        <span class="text-cyber-blue font-bold">$289</span>
-                    </div>
-                    <button class="w-full border border-white/10 text-white py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition">
-                        Agregar al Carrito
-                    </button>
-                </div>
-
-                <!-- Producto 5: SSD -->
-                <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
-                    <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
-                        <img src="https://images.unsplash.com/photo-1600065261314-5f502c3f87ec?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-xl font-bold tracking-tight">Samsung 990 PRO 2TB NVMe M.2</h3>
-                            <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">PCIe 4.0 / Lectura 7450 MB/s</p>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold tracking-tight">Intel Core i9-14900K 3.2 GHz</h3>
+                                <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">24 Nucleos / 32 Hilos / Hasta 6.0 GHz</p>
+                            </div>
+                            <span class="text-cyber-blue font-bold">$649</span>
                         </div>
-                        <span class="text-cyber-blue font-bold">$189</span>
+                        <button class="w-full bg-cyber-blue text-white py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest btn-glitch">
+                            Compra Rapida
+                        </button>
                     </div>
-                    <button class="w-full border border-white/10 text-white py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition">
-                        Agregar al Carrito
-                    </button>
-                </div>
 
-                <!-- Producto 6: Refrigeracion Liquida -->
-                <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
-                    <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
-                        <img src="https://images.unsplash.com/photo-1587302912306-cf1ed9c33146?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 right-4 bg-black/80 text-cyber-blue text-[10px] font-bold px-3 py-1 border border-cyber-blue/30 rounded">RECOMENDADO</div>
-                    </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-xl font-bold tracking-tight">NZXT Kraken Elite 360 RGB</h3>
-                            <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">Kit Liquida 360mm / Pantalla LCD 2.36"</p>
+                    <!-- Producto 3: Placa Base -->
+                    <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
+                        <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
                         </div>
-                        <span class="text-cyber-blue font-bold">$299</span>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold tracking-tight">ASUS ROG MAXIMUS Z790 HERO</h3>
+                                <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">Socket 1700 / WiFi 7 / PCIe 5.0</p>
+                            </div>
+                            <span class="text-cyber-blue font-bold">$749</span>
+                        </div>
+                        <button class="w-full border border-white/10 text-white py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition">
+                            Agregar al Carrito
+                        </button>
                     </div>
-                    <button class="w-full border border-white/10 text-white py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition">
-                        Agregar al Carrito
-                    </button>
-                </div>
 
+                    <!-- Producto 4: RAM -->
+                    <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
+                        <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
+                            <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
+                            <div class="absolute top-4 right-4 bg-black/80 text-cyber-blue text-[10px] font-bold px-3 py-1 border border-cyber-blue/30 rounded">NUEVO</div>
+                        </div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold tracking-tight">Corsair Dominator Platinum RGB</h3>
+                                <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">64GB (2x32) DDR5 6000MHz CL30</p>
+                            </div>
+                            <span class="text-cyber-blue font-bold">$289</span>
+                        </div>
+                        <button class="w-full border border-white/10 text-white py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition">
+                            Agregar al Carrito
+                        </button>
+                    </div>
+
+                    <!-- Producto 5: Refrigeracion Liquida -->
+                    <div class="product-card bg-card-bg border border-white/5 p-6 rounded-2xl min-w-[85vw] md:min-w-[380px] snap-center shrink-0">
+                        <div class="h-64 bg-black rounded-xl mb-8 overflow-hidden relative group">
+                            <img src="https://images.unsplash.com/photo-1587302912306-cf1ed9c33146?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-700 group-hover:scale-110">
+                            <div class="absolute top-4 right-4 bg-black/80 text-cyber-blue text-[10px] font-bold px-3 py-1 border border-cyber-blue/30 rounded">RECOMENDADO</div>
+                        </div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold tracking-tight">NZXT Kraken Elite 360 RGB</h3>
+                                <p class="text-gray-500 font-mono text-[10px] mt-1 uppercase">Kit Liquida 360mm / Pantalla LCD 2.36"</p>
+                            </div>
+                            <span class="text-cyber-blue font-bold">$299</span>
+                        </div>
+                        <button class="w-full border border-white/10 text-white py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition">
+                            Agregar al Carrito
+                        </button>
+                    </div>
+
+                </div>
             </div>
+
+            <!-- CINTA DE TEXTO ANIMADA (MARQUEE) - INFERIOR -->
+            <div class="relative flex overflow-x-hidden border-y border-white/5 bg-cyber-blue/10 py-4 mt-10 w-full shadow-[0_0_30px_rgba(0,102,255,0.1)]">
+                <div class="animate-marquee whitespace-nowrap flex items-center min-w-max">
+                    <!-- Set 1 -->
+                    <div class="flex items-center gap-10 px-5 text-cyber-blue font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] font-bold">
+                        <span>ENSAMBLES PREMIUM</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>HARDWARE EXTREMO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>PRECIOS UNICOS</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>STOCK LIMITADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>OVERCLOCK CERTIFICADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>GRADO INDUSTRIAL</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                    </div>
+                    <!-- Set 2 -->
+                    <div class="flex items-center gap-10 px-5 text-cyber-blue font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] font-bold">
+                        <span>ENSAMBLES PREMIUM</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>HARDWARE EXTREMO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>PRECIOS UNICOS</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>STOCK LIMITADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>OVERCLOCK CERTIFICADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>GRADO INDUSTRIAL</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                    </div>
+                    <!-- Set 3 -->
+                    <div class="flex items-center gap-10 px-5 text-cyber-blue font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] font-bold">
+                        <span>ENSAMBLES PREMIUM</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>HARDWARE EXTREMO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>PRECIOS UNICOS</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>STOCK LIMITADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>OVERCLOCK CERTIFICADO</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                        <span>GRADO INDUSTRIAL</span> <span class="w-1.5 h-1.5 bg-white/30 rounded-full"></span>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
